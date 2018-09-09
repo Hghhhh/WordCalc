@@ -13,6 +13,9 @@ public class WordCalc {
         this.args  = args;
     }
 
+    public WordCalc() {
+    }
+
     /**
      * 根据第一个参数判断调用的方法
      */
@@ -115,6 +118,16 @@ public class WordCalc {
         System.out.println("您输入的参数有误！");
     }
 
+
+    public String setTextForView(String path) throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(charCount(path)+"\n");
+        stringBuilder.append(wordCount(path)+"\n");
+        stringBuilder.append(lineCount(path)+"\n");
+        stringBuilder.append(moreMessageCount(path+"\n"));
+        return stringBuilder.toString();
+
+    }
 
 
 }
