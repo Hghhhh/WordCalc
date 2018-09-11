@@ -20,10 +20,11 @@ public class View extends JFrame implements ActionListener{
     public View(){
         super("WordCalc");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(700,250);
         this.setLocation(400, 300);
         this.setVisible(true);
         this.init();
+        this.setPreferredSize(new Dimension(1200,300));
+        this.pack();
     }
 
     private void init(){

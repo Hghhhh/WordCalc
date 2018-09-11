@@ -3,8 +3,11 @@ package util;
 import junit.framework.TestCase;
 import model.MyFile;
 import org.junit.Test;
+import view.View;
 
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,5 +34,18 @@ public class FileUtilTest extends TestCase {
         System.out.println(myFileList.get(0).getLineNum());
 
     }
+
+    @Test
+    public void testFileUtilt3() throws IOException {
+       // WordCalc wordCalc = new WordCalc();
+       // wordCalc.setTextForView("C:\\Users\\Administrator\\Documents\\.metadata\\version.ini");
+        //Path path = FileSystems.getDefault().getPath("C:\\Users\\Administrator\\Desktop\\123\\1.txt");
+        String s = "*asdas";
+        String[] ss = s.split("\\*");
+        for(int i=0;i<ss.length;i++){
+            System.out.println(ss[i]+"  "+ss.length);
+        }
+    }
+
 
 }
