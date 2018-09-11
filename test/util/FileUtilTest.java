@@ -1,6 +1,7 @@
 package util;
 
 import junit.framework.TestCase;
+import main.Main;
 import model.MyFile;
 import org.junit.Test;
 import view.View;
@@ -15,37 +16,69 @@ import java.util.regex.Pattern;
 public class FileUtilTest extends TestCase {
 
     @Test
-    public void testFileUtilt() throws IOException {
-        List<MyFile> myFileList =  FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\1.txt");
+    public void testFile1() throws IOException {
+        List<MyFile> myFileList =  FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\test\\HelloWorld.java");
         assertEquals(1,myFileList.size());
-        assertEquals(7,myFileList.get(0).getLineNum());
-        assertEquals(13,myFileList.get(0).getWordNum());
-        assertEquals(4,myFileList.get(0).getBlankLineNum());
-        assertEquals(62,myFileList.get(0).getCharNum());
+        assertEquals(11,myFileList.get(0).getLineNum());
+        assertEquals(12,myFileList.get(0).getWordNum());
+        assertEquals(3,myFileList.get(0).getBlankLineNum());
+        assertEquals(103,myFileList.get(0).getCharNum());
+        assertEquals(5,myFileList.get(0).getCommentLineNum());
     }
 
     @Test
-    public void testFileUtilt2() throws IOException {
-        List<MyFile> myFileList =  FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\1.txt");
-        assertEquals(5,myFileList.get(0).getCodeLineNum());
-        assertEquals(8,myFileList.get(0).getCommentLineNum());
-        assertEquals("1.txt",myFileList.get(0).getFileName());
-        System.out.println(myFileList.get(0).getFileName());
-        System.out.println(myFileList.get(0).getLineNum());
+    public void testFile2() throws IOException {
+        List<MyFile> myFileList =  FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\test\\OneChar.java");
+        assertEquals(1,myFileList.size());
+        assertEquals(1,myFileList.get(0).getLineNum());
+        assertEquals(1,myFileList.get(0).getWordNum());
+        assertEquals(0,myFileList.get(0).getBlankLineNum());
+        assertEquals(1,myFileList.get(0).getCharNum());
+        assertEquals(0,myFileList.get(0).getCommentLineNum());
+    }
 
+    public void testFile3() throws IOException {
+        List<MyFile> myFileList =  FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\test\\BlankFile.java");
+        assertEquals(1,myFileList.size());
+        assertEquals(0,myFileList.get(0).getLineNum());
+        assertEquals(0,myFileList.get(0).getWordNum());
+        assertEquals(0,myFileList.get(0).getBlankLineNum());
+        assertEquals(0,myFileList.get(0).getCharNum());
+        assertEquals(0,myFileList.get(0).getCommentLineNum());
+    }
+
+    public void testFile4() throws IOException {
+        List<MyFile> myFileList =  FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\test\\OneWord.java");
+        assertEquals(1,myFileList.size());
+        assertEquals(1,myFileList.get(0).getLineNum());
+        assertEquals(1,myFileList.get(0).getWordNum());
+        assertEquals(0,myFileList.get(0).getBlankLineNum());
+        assertEquals(5,myFileList.get(0).getCharNum());
+        assertEquals(0,myFileList.get(0).getCommentLineNum());
+    }
+
+    public void testFile6() throws IOException {
+        List<MyFile> myFileList =  FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\test\\OneLine.java");
+        assertEquals(1,myFileList.size());
+        assertEquals(1,myFileList.get(0).getLineNum());
+        assertEquals(8,myFileList.get(0).getWordNum());
+        assertEquals(0,myFileList.get(0).getBlankLineNum());
+        assertEquals(27,myFileList.get(0).getCharNum());
+        assertEquals(0,myFileList.get(0).getCommentLineNum());
+    }
+
+    public void testDir() throws IOException {
+        List<MyFile> myFileList =  FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\test");
+        assertEquals(5,myFileList.size());
     }
 
     @Test
-    public void testFileUtilt3() throws IOException {
-       // WordCalc wordCalc = new WordCalc();
-       // wordCalc.setTextForView("C:\\Users\\Administrator\\Documents\\.metadata\\version.ini");
-        //Path path = FileSystems.getDefault().getPath("C:\\Users\\Administrator\\Desktop\\123\\1.txt");
-        String s = "*asdas";
-        String[] ss = s.split("\\*");
-        for(int i=0;i<ss.length;i++){
-            System.out.println(ss[i]+"  "+ss.length);
-        }
+    public void testMain() throws IOException {
+        String[] strings = {"-s","-a","C:\\Users\\Administrator\\Desktop\\*.java"};
+        Main.main(strings);
+
     }
+
 
 
 }
